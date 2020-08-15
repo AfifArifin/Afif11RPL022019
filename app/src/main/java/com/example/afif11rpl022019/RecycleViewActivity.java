@@ -4,20 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class RecycleViewActivity extends AppCompatActivity {
 
     private RecyclerView mRecycleView;
-    private  RecyclerView.Adapter mAdapter;
+    private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
+        SharedPreferences getName = getSharedPreferences("login",MODE_PRIVATE);
+        String nama = getName.getString("username","");
+        Toast.makeText(RecycleViewActivity.this,"Welcome "+nama,Toast.LENGTH_SHORT).show();
 
         ArrayList<ItemActivity> exampleList = new ArrayList<>();
         exampleList.add(new ItemActivity(R.drawable.profile_account,"Line 1","Line 2"));
