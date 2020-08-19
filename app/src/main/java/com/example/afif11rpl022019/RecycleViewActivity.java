@@ -23,9 +23,6 @@ public class RecycleViewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
-        SharedPreferences getName = getSharedPreferences("login",MODE_PRIVATE);
-        String nama = getName.getString("username","");
-        Toast.makeText(RecycleViewActivity.this,"Welcome "+nama,Toast.LENGTH_SHORT).show();
 
         ArrayList<ItemActivity> exampleList = new ArrayList<>();
         exampleList.add(new ItemActivity(R.drawable.profile_account,"Line 1","Line 2"));
