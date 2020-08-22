@@ -42,6 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     Intent in = new Intent(RegistrationActivity.this, MainMenuActivity.class);
                     Toast.makeText(RegistrationActivity.this, "Welcome " + Name, Toast.LENGTH_SHORT).show();
                     startActivity(in);
+                    finish();
                 }
             }
         });
@@ -50,6 +51,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent in = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(in);
+                finish();
             }
         });
     }

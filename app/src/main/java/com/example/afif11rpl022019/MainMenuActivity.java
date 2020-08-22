@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    private long backpress;
+    private Toast backToast;
     Button btnAction;
 
     @Override
@@ -20,6 +22,20 @@ public class MainMenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_menu);
         btnAction = findViewById(R.id.btnAction);
 
-
     }
+
+    @Override
+    public void onBackPressed() {
+        if (backpress + 3000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            finishAffinity();
+            return;
+        } else {
+            backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backpress = System.currentTimeMillis();
+    }
+
 }

@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     Intent in = new Intent(LoginActivity.this,MainMenuActivity.class);
                       Toast.makeText(LoginActivity.this, "Welcome Afif", Toast.LENGTH_SHORT).show();
                     startActivity(in);
+                      finish();
                  }else if(txtusername.getText().toString().isEmpty() && txtpassword.getText().toString().isEmpty()){
                       Toast.makeText(LoginActivity.this, "Data belum diisi", Toast.LENGTH_SHORT).show();
                   }else {
