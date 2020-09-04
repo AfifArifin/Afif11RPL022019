@@ -6,7 +6,16 @@ public class Model {
     String poster_path;
     Boolean adult;
     String overview;
-    int vote_count;
+    int vote_count,vote_average;
+    String genres;
+
+    public String getGenres() {
+        return genres;
+    }
+
+    public void setGenres(String genres) {
+        this.genres = genres;
+    }
 
     public String getOriginal_title() {
         return original_title;

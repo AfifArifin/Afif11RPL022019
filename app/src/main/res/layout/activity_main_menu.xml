@@ -33,22 +33,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-                <ImageView
-                    android:id="@+id/imgList"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_margin="10dp"
-                    android:src="@drawable/ic_baseline_format_list_bulleted_24" />
-
-                <ImageView
-                    android:id="@+id/imgSeacrh"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="10dp"
-                    android:layout_toLeftOf="@id/imgList"
-                    android:src="@drawable/ic_baseline_search_24" />
-
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
 
