@@ -17,14 +17,6 @@ public class MainMenuActivity extends AppCompatActivity {
     Button btnAction;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_menu);
-        btnAction = findViewById(R.id.btnAction);
-
-    }
-
-    @Override
     public void onBackPressed() {
         if (backpress + 3000 > System.currentTimeMillis()) {
             backToast.cancel();
@@ -37,5 +29,22 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         backpress = System.currentTimeMillis();
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_menu);
+        btnAction = findViewById(R.id.btnAction);
+
+        btnAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),ListData.class));
+            }
+        });
+    }
+
+
+
 
 }
