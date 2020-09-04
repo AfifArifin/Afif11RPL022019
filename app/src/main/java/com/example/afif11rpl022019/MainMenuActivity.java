@@ -14,7 +14,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private long backpress;
     private Toast backToast;
-    Button btnAction;
+    Button btnAction,btnAdventure,btnMagic,btnIsekai,btnsport,btnSuperPower;
 
     @Override
     public void onBackPressed() {
@@ -35,11 +35,37 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         btnAction = findViewById(R.id.btnAction);
+        btnAdventure = findViewById(R.id.btnAdventure);
+        btnMagic = findViewById(R.id.btnMagic);
+        btnIsekai = findViewById(R.id.btnIsekai);
+        btnsport = findViewById(R.id.btnSport);
+        btnSuperPower = findViewById(R.id.btnSuperPower);
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(),ListData.class));
+            }
+        });
+        btnAdventure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });btnSuperPower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });btnsport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });btnIsekai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
         });
     }
