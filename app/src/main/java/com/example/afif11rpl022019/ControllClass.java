@@ -1,16 +1,16 @@
 package com.example.afif11rpl022019;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class ControllClass extends AppCompatActivity {
 
-    private  SharedPreferences pref;
-    private  SharedPreferences pref2;
+    private SharedPreferences pref;
+    private SharedPreferences pref2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,12 @@ public class ControllClass extends AppCompatActivity {
         }
 
         if (pref2.getString("user", "").equalsIgnoreCase("afif")) {
-            SharedPreferences pref2 = getSharedPreferences("dataLogin",MODE_PRIVATE);
-            String getName2 = pref2.getString("user","");
-            startActivity(new Intent(getApplicationContext(),MainMenuActivity.class));
-            Toast.makeText(this, "Welcome "+getName2, Toast.LENGTH_SHORT).show();
+            SharedPreferences pref2 = getSharedPreferences("dataLogin", MODE_PRIVATE);
+            String getName2 = pref2.getString("user", "");
+            startActivity(new Intent(getApplicationContext(), MainMenuActivity.class));
+            Toast.makeText(this, "Welcome " + getName2, Toast.LENGTH_SHORT).show();
             finish();
-        }else{
+        } else {
 
         }
     }

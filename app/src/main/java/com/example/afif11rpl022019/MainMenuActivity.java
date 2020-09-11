@@ -1,20 +1,18 @@
 package com.example.afif11rpl022019;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     private long backpress;
     private Toast backToast;
-    Button btnAction,btnAdventure,btnMagic,btnIsekai,btnsport,btnSuperPower;
+    TextView btnAction, btnAdventure, btnMagic, btnIsekai, btnsport, btnSuperPower, btnMartialArts, btnGame,btnMilitary,btnMecha;
 
     @Override
     public void onBackPressed() {
@@ -40,11 +38,15 @@ public class MainMenuActivity extends AppCompatActivity {
         btnIsekai = findViewById(R.id.btnIsekai);
         btnsport = findViewById(R.id.btnSport);
         btnSuperPower = findViewById(R.id.btnSuperPower);
+        btnMartialArts = findViewById(R.id.btnMartialArts);
+        btnGame = findViewById(R.id.btnGame);
+        btnMecha = findViewById(R.id.btnMecha);
+        btnMilitary = findViewById(R.id.btnMilitary);
 
         btnAction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),ListData.class));
+                startActivity(new Intent(getApplicationContext(), ListData.class));
             }
         });
         btnAdventure.setOnClickListener(new View.OnClickListener() {
@@ -52,25 +54,56 @@ public class MainMenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
-        });btnSuperPower.setOnClickListener(new View.OnClickListener() {
+        });
+        btnMagic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
-        });btnsport.setOnClickListener(new View.OnClickListener() {
+        });
+        btnSuperPower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
-        });btnIsekai.setOnClickListener(new View.OnClickListener() {
+        });
+        btnsport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnIsekai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnMartialArts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnMecha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnMilitary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
-
 
 
 }

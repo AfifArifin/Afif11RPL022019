@@ -6,7 +6,7 @@ public class Model {
     String poster_path;
     Boolean adult;
     String overview;
-    int vote_count,vote_average;
+    int vote_count, vote_average;
     String genres;
 
     public String getGenres() {

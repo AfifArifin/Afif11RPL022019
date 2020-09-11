@@ -1,7 +1,5 @@
 package com.example.afif11rpl022019;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,9 +9,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class SplashScreenActivity extends AppCompatActivity {
 
-    Animation logoAnimation,sloganAnimation;
+    Animation logoAnimation, sloganAnimation;
     TextView txtSlogan;
     ImageView imgLogo;
 
@@ -34,16 +34,16 @@ public class SplashScreenActivity extends AppCompatActivity {
         txtSlogan.setAnimation(sloganAnimation);
         imgLogo.setAnimation(logoAnimation);
 
-        Thread thread = new Thread(){
+        Thread thread = new Thread() {
 
             @Override
             public void run() {
                 try {
                     sleep(3000);
-                }catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                }finally {
-                    startActivity(new Intent(SplashScreenActivity.this,ControllClass.class));
+                } finally {
+                    startActivity(new Intent(SplashScreenActivity.this, ControllClass.class));
                     finish();
                 }
 

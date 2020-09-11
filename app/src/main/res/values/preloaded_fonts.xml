@@ -5,5 +5,7 @@
         <item>@font/adamina</item>
         <item>@font/arizonia</item>
         <item>@font/bungee</item>
+        <item>@font/roboto</item>
+        <item>@font/roboto_bold</item>
     </array>
 </resources>

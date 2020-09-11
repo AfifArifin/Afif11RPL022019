@@ -27,6 +27,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
 
     interface Callback {
         void onClick(int position);
+
         void test();
     }
 
@@ -34,7 +35,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
     public DataAdapter(ArrayList<Model> dataList, Callback callback) {
         this.callback = callback;
         this.dataList = dataList;
-        Log.d("makanan", "MahasiswaAdapter: "+dataList.size()+"");
+        Log.d("makanan", "MahasiswaAdapter: " + dataList.size() + "");
     }
 
     @Override
@@ -49,7 +50,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
         holder.txtNama.setText(dataList.get(position).getOriginal_title());
         holder.txtNpm.setText(dataList.get(position).getOverview());
         holder.tvdate.setText(dataList.get(position).getRelease_date());
-        Log.d("makananku", "onBindViewHolder: "+dataList.get(position).getPoster_path());
+        Log.d("makananku", "onBindViewHolder: " + dataList.get(position).getPoster_path());
         Glide.with(holder.itemView)
                 .load(dataList.get(position).getPoster_path())
                 .override(Target.SIZE_ORIGINAL)
@@ -63,14 +64,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
         return (dataList != null) ? dataList.size() : 0;
     }
 
-    public class DatakuViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
-        private TextView txtNama, txtNpm,tvdate;
+    public class DatakuViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+        private TextView txtNama, txtNpm, tvdate;
         CardView card;
         ImageView ivprofile;
 
         public DatakuViewHolder(View itemView) {
             super(itemView);
-            viewku=itemView;
+            viewku = itemView;
             card = (CardView) itemView.findViewById(R.id.cardku);
             ivprofile = (ImageView) itemView.findViewById(R.id.ivprofile);
             txtNama = (TextView) itemView.findViewById(R.id.tvname);
@@ -90,12 +91,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             MenuItem Edit = menu.add(Menu.NONE, 1, 1, "Edit");
             MenuItem Delete = menu.add(Menu.NONE, 2, 2, "Delete");
-            posku=getAdapterPosition();
+            posku = getAdapterPosition();
             Edit.setOnMenuItemClickListener(onEditMenu);
             Delete.setOnMenuItemClickListener(onEditMenu);
         }
 
     }
+
     private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
         @Override
         public boolean onMenuItemClick(MenuItem item) {
@@ -103,7 +105,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
             switch (item.getItemId()) {
                 case 1:
                     //Do stuff
-                    Toast.makeText(viewku.getContext(), ""+posku, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(viewku.getContext(), "" + posku, Toast.LENGTH_SHORT).show();
                     break;
 
                 case 2:

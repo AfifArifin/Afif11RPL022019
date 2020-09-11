@@ -1,8 +1,5 @@
 package com.example.afif11rpl022019;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,12 +8,29 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class RegistrationActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
 
+public class RegistrationActivity extends AppCompatActivity {
+    private long backpress;
+    private Toast backToast;
     SharedPreferences pref;
     SharedPreferences.Editor editor;
     EditText txtuser, txtpass;
     Button btnMasuk, btnBack;
+
+    @Override
+    public void onBackPressed() {
+        if (backpress + 3000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            finishAffinity();
+            return;
+        } else {
+            backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backpress = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,5 @@
 package com.example.afif11rpl022019;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,11 +17,27 @@ public class LoginActivity extends AppCompatActivity {
     Button btnSignUp, btnLogin;
     EditText txtusername, txtpassword;
     TextView tvforgot;
+    private long backpress;
+    private Toast backToast;
+
+    @Override
+    public void onBackPressed() {
+        if (backpress + 3000 > System.currentTimeMillis()) {
+            backToast.cancel();
+            super.onBackPressed();
+            finishAffinity();
+            return;
+        } else {
+            backToast = Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT);
+            backToast.show();
+        }
+        backpress = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        pref = getSharedPreferences("dataLogin",MODE_PRIVATE);
-        SharedPreferences getUser = getSharedPreferences("login",MODE_PRIVATE);
+        pref = getSharedPreferences("dataLogin", MODE_PRIVATE);
+        SharedPreferences getUser = getSharedPreferences("login", MODE_PRIVATE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         tvforgot = findViewById(R.id.tvForgot);
@@ -34,19 +49,19 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor =pref.edit();
-                editor.putString("user",txtusername.getText().toString());
+                editor = pref.edit();
+                editor.putString("user", txtusername.getText().toString());
                 editor.apply();
-                  if (txtusername.getText().toString().equalsIgnoreCase("afif") && txtpassword.getText().toString().equals("afif")){
-                    Intent in = new Intent(LoginActivity.this,MainMenuActivity.class);
-                      Toast.makeText(LoginActivity.this, "Welcome Afif", Toast.LENGTH_SHORT).show();
+                if (txtusername.getText().toString().equalsIgnoreCase("afif") && txtpassword.getText().toString().equals("afif")) {
+                    Intent in = new Intent(LoginActivity.this, MainMenuActivity.class);
+                    Toast.makeText(LoginActivity.this, "Welcome Afif", Toast.LENGTH_SHORT).show();
                     startActivity(in);
-                      finish();
-                 }else if(txtusername.getText().toString().isEmpty() && txtpassword.getText().toString().isEmpty()){
-                      Toast.makeText(LoginActivity.this, "Data belum diisi", Toast.LENGTH_SHORT).show();
-                  }else {
-                      Toast.makeText(LoginActivity.this, "Cek username / password", Toast.LENGTH_SHORT).show();
-                  }
+                    finish();
+                } else if (txtusername.getText().toString().isEmpty() && txtpassword.getText().toString().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Data belum diisi", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Cek username / password", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

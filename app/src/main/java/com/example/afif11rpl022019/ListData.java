@@ -1,12 +1,12 @@
 package com.example.afif11rpl022019;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -57,8 +57,6 @@ public class ListData extends AppCompatActivity {
 //        DataArrayList.add(data2);
 
 
-
-
 //        adapter = new DataAdapter(DataArrayList, new DataAdapter.Callback() {
 //            @Override
 //            public void onClick(int position) {
@@ -102,7 +100,7 @@ public class ListData extends AppCompatActivity {
                                 modelku = new Model();
                                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                                 modelku.setOriginal_title(jsonObject.getString("original_title"));
-                                modelku.setPoster_path("https://image.tmdb.org/t/p/w500"+jsonObject.getString("poster_path"));
+                                modelku.setPoster_path("https://image.tmdb.org/t/p/w500" + jsonObject.getString("poster_path"));
                                 modelku.setRelease_date(jsonObject.getString("release_date"));
                                 modelku.setAdult(jsonObject.getBoolean("adult"));
                                 modelku.setOverview(jsonObject.getString("overview"));
