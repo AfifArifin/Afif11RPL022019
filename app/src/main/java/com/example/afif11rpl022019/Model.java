@@ -1,13 +1,32 @@
 package com.example.afif11rpl022019;
 
+import android.widget.Switch;
+
 public class Model {
     String original_title;
     String release_date;
     String poster_path;
     Boolean adult;
     String overview;
-    int vote_count, vote_average;
+    int vote_count;
     String genres;
+    String popularity,vote_average;
+
+    public String getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(String popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(String vote_average) {
+        this.vote_average = vote_average;
+    }
 
     public String getGenres() {
         return genres;

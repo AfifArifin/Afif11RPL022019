@@ -1,57 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
-    android:layout_margin="10dp"
+    android:elevation="0dp"
+    card_view:cardElevation="0dp"
+    app:cardBackgroundColor="#00AEFF"
     android:id="@+id/cardku"
-    android:elevation="5dp"
-    app:cardElevation="5dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="180dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <ImageView
-            android:layout_margin="10dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/ivprofile"
-            android:src="@mipmap/ic_launcher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="120dp"
+            android:layout_height="match_parent"/>
+
+
+
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:paddingLeft="20dp"
+            android:background="#fff"
+            android:layout_toEndOf="@+id/ivprofile"
+            android:layout_alignParentBottom="true"
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/ivprofile">
 
-            <TextView
-                android:textSize="20sp"
-                android:textColor="#1C35C1"
-                android:textStyle="bold"
-                android:text="name placeholder"
-                android:id="@+id/tvname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
-            <TextView
-                android:textColor="#8C8C8C"
-                android:id="@+id/tvdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            <ScrollView
+
+                    <TextView
+                        android:paddingTop="10dp"
+                        android:id="@+id/tvname"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:hint="Movie Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-            <TextView
-                android:layout_marginTop="5dp"
-                android:textColor="#000"
-                android:text="desc placeholder"
-                android:id="@+id/tvdesc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-            </ScrollView>
-        </LinearLayout>
+                <TextView
+                    android:fontFamily="@font/roboto"
+                    android:text="Date : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/tvdate"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Date movie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:fontFamily="@font/roboto"
+                    android:text="Genre : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvgenre"-->
+<!--                    android:fontFamily="@font/roboto"-->
+<!--                    android:hint="Genre"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"/>-->
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    </LinearLayout>
+                <TextView
+                    android:fontFamily="@font/roboto"
+                    android:text="Popularity : "
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"/>
+                    <TextView
+                        android:id="@+id/tvpopularity"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Popularity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/ic_baseline_star_24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/tvrate"
+                            android:fontFamily="@font/roboto"
+                            android:textSize="20sp"
+                            android:hint="Rate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+            </RelativeLayout>
+                </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+<!--    <LinearLayout-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+<!--        <ImageView-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:id="@+id/ivprofile"-->
+<!--            android:src="@mipmap/ic_launcher"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <LinearLayout-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <TextView-->
+<!--                android:textSize="20sp"-->
+<!--                android:textColor="#1C35C1"-->
+<!--                android:textStyle="bold"-->
+<!--                android:text="name placeholder"-->
+<!--                android:id="@+id/tvname"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--            <TextView-->
+<!--                android:textColor="#8C8C8C"-->
+<!--                android:id="@+id/tvdate"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--            <ScrollView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content">-->
+<!--            <TextView-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:textColor="#000"-->
+<!--                android:text="desc placeholder"-->
+<!--                android:id="@+id/tvdesc"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--            </ScrollView>-->
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
 
 </androidx.cardview.widget.CardView>

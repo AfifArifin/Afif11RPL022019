@@ -18,6 +18,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListData extends AppCompatActivity {
 
@@ -104,7 +105,17 @@ public class ListData extends AppCompatActivity {
                                 modelku.setRelease_date(jsonObject.getString("release_date"));
                                 modelku.setAdult(jsonObject.getBoolean("adult"));
                                 modelku.setOverview(jsonObject.getString("overview"));
-                                modelku.setVote_count(jsonObject.getInt("vote_count"));
+                                modelku.setVote_average(jsonObject.getString("vote_count"));
+                                modelku.setPopularity(jsonObject.getString("popularity"));
+//                                String Allgenre[] = {"Action","Adventure","Animation","Comedy","Crime","Documentary","Drama","Family","Fantasy","History","Horror","Music","Mystery","Romance","Science Fiction","TV Movie","Thriller","War","Western"};
+//                                String genre = jsonObject.getString("genre_ids");
+//
+//
+////                                switch (genre){
+////                                    case "[28]":
+////                                        genre = Allgenre[0];
+////                                }
+//                                modelku.setGenres(genre);
                                 DataArrayList.add(modelku);
                             }
 
