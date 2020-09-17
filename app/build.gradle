@@ -24,6 +24,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.sackcentury:shinebutton:1.0.0'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.android.gms:play-services-auth:18.1.0'

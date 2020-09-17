@@ -3,13 +3,13 @@ package com.example.afif11rpl022019;
 import android.widget.Switch;
 
 public class Model {
+    boolean isFavorite;
     String original_title;
     String release_date;
     String poster_path;
     Boolean adult;
     String overview;
     int vote_count;
-    String genres;
     String popularity,vote_average;
 
     public String getPopularity() {
@@ -28,13 +28,7 @@ public class Model {
         this.vote_average = vote_average;
     }
 
-    public String getGenres() {
-        return genres;
-    }
 
-    public void setGenres(String genres) {
-        this.genres = genres;
-    }
 
     public String getOriginal_title() {
         return original_title;

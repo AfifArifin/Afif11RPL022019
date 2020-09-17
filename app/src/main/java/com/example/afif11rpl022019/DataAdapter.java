@@ -25,6 +25,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
     View viewku;
     int posku;
 
+
     interface Callback {
         void onClick(int position);
 
@@ -38,6 +39,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
         Log.d("makanan", "MahasiswaAdapter: " + dataList.size() + "");
     }
 
+
     @Override
     public DatakuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
@@ -47,12 +49,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
 
     @Override
     public void onBindViewHolder(final DatakuViewHolder holder, final int position) {
+
         holder.txtNama.setText(dataList.get(position).getOriginal_title());
-//        holder.tvgenre.setText(dataList.get(position).getGenres());
         holder.tvrate.setText(dataList.get(position).getVote_average());
         holder.tvpopularity.setText(dataList.get(position).getPopularity());
         holder.tvdate.setText(dataList.get(position).getRelease_date());
-        Log.d("makananku", "onBindViewHolder: " + dataList.get(position).getPoster_path());
+        Log.d("cover", "onBindViewHolder: " + dataList.get(position).getPoster_path());
         Glide.with(holder.itemView)
                 .load(dataList.get(position).getPoster_path())
                 .override(Target.SIZE_ORIGINAL)
@@ -61,32 +63,35 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
 
     }
 
+
     @Override
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
     }
 
+
     public class DatakuViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        private TextView txtNama, txtNpm, tvdate, tvpopularity, tvrate,tvgenre;
+        private TextView txtNama, txtNpm, tvdate, tvpopularity, tvrate;
         CardView card;
         ImageView ivprofile;
 
         public DatakuViewHolder(View itemView) {
             super(itemView);
             viewku = itemView;
-            card = (CardView) itemView.findViewById(R.id.cardku);
-            ivprofile = (ImageView) itemView.findViewById(R.id.ivprofile);
-            txtNama = (TextView) itemView.findViewById(R.id.tvname);
-            tvpopularity= (TextView) itemView.findViewById(R.id.tvpopularity);
+            card =  itemView.findViewById(R.id.cardku);
+            ivprofile =  itemView.findViewById(R.id.ivprofile);
+            txtNama =  itemView.findViewById(R.id.tvname);
+            tvpopularity=  itemView.findViewById(R.id.tvpopularity);
             tvdate = itemView.findViewById(R.id.tvdate);
             tvrate = itemView.findViewById(R.id.tvrate);
-//            tvgenre = itemView.findViewById(R.id.tvgenre);
             itemView.setOnCreateContextMenuListener(this);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     callback.onClick(getAdapterPosition());
+
+
                 }
             });
         }
@@ -120,5 +125,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
             return true;
         }
     };
+
+
 
 }
