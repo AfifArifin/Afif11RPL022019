@@ -1,5 +1,6 @@
 package com.example.afif11rpl022019;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -77,7 +78,16 @@ public class ListData extends AppCompatActivity {
                             adapter = new DataAdapter(DataArrayList, new DataAdapter.Callback() {
                                 @Override
                                 public void onClick(int position) {
-
+                                    Model movie = DataArrayList.get(position);
+                                    Intent intent = new Intent(ListData.this,DetailActivity.class);
+                                    intent.putExtra("judul",movie.getOriginal_title());
+                                    intent.putExtra("gambar",movie.getPoster_path());
+                                    intent.putExtra("date",movie.getRelease_date());
+                                    intent.putExtra("desc",movie.getOverview());
+                                    intent.putExtra("popularity",movie.getPopularity());
+                                    intent.putExtra("votecount",movie.getVote_average());
+                                    intent.putExtra("adult",movie.getAdult());
+                                    startActivity(intent);
                                 }
 
                                 @Override

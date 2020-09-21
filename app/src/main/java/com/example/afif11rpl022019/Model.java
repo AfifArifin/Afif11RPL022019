@@ -3,7 +3,6 @@ package com.example.afif11rpl022019;
 import android.widget.Switch;
 
 public class Model {
-    boolean isFavorite;
     String original_title;
     String release_date;
     String poster_path;

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@drawable/details_bg"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/imgback"
+                android:layout_margin="10dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:elevation="10dp"
+            android:layout_weight="8"
+            android:background="#fff"
+            android:layout_margin="40dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/ic_launcher"
+                            android:id="@+id/ivposter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent">
+                        <TextView
+                            android:id="@+id/tvjudul"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="50dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="judul movie"
+                            android:textAllCaps="true"
+                            android:textColor="#000"
+                            android:textSize="20sp" />
+                        <TextView
+                            android:id="@+id/tvdate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="Tanggal"
+                            android:textColor="#000"
+                            android:textSize="10sp" />
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:text="Adult : "
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:id="@+id/tvadultt"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:text="Genre : "
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:id="@+id/tvgnre"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:text="Popularity : "
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:id="@+id/tvpopuler"
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </LinearLayout>
+                        <RelativeLayout
+                            android:layout_marginBottom="25dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                            <com.sackcentury.shinebuttonlib.ShineButton
+                                android:layout_marginBottom="10dp"
+                                android:layout_alignParentBottom="true"                        android:id="@+id/po_image1"
+                                android:layout_width="24dp"
+                                android:layout_height="25dp"
+                                android:layout_marginRight="15dp"
+                                android:src="@android:color/darker_gray"
+                                app:allow_random_color="false"
+                                app:big_shine_color="#FF6666"
+                                app:btn_color="@android:color/darker_gray"
+                                app:btn_fill_color="#FF6666"
+                                app:click_animation_duration="200"
+                                app:enable_flashing="false"
+                                app:shine_animation_duration="1500"
+                                app:shine_count="8"
+                                app:shine_turn_angle="10"
+                                app:siShape="@raw/heart"
+                                app:small_shine_color="#CC9999"
+                                app:small_shine_offset_angle="20" />
+
+
+                            <LinearLayout
+                                android:layout_margin="10dp"
+                                android:layout_alignParentBottom="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:src="@drawable/ic_baseline_star_24"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:text="999"
+                                    android:textColor="#000"
+                                    android:id="@+id/tvratee"
+                                    android:fontFamily="@font/roboto"
+                                    android:textSize="20sp"
+                                    android:hint="Rate"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_weight="1.3"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:orientation="vertical"
+                android:layout_height="0dp">
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="storyline"
+                    android:textAllCaps="true"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto"
+                    android:id="@+id/txtdeskripsi"
+                    android:text="Deskripsi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
