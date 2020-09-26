@@ -10,6 +10,15 @@ public class Model {
     String overview;
     int vote_count;
     String popularity,vote_average;
+String lang;
+
+    public String getLang() {
+        return lang;
+    }
+
+    public void setLang(String lang) {
+        this.lang = lang;
+    }
 
     public String getPopularity() {
         return popularity;

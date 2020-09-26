@@ -30,7 +30,9 @@
             android:elevation="10dp"
             android:layout_weight="8"
             android:background="#fff"
-            android:layout_margin="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="0dp">
@@ -71,14 +73,28 @@
                             android:textAllCaps="true"
                             android:textColor="#000"
                             android:textSize="20sp" />
-                        <TextView
-                            android:id="@+id/tvdate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto"
-                            android:text="Tanggal"
-                            android:textColor="#000"
-                            android:textSize="10sp" />
+
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:textSize="12sp"
+                                android:fontFamily="@font/roboto"
+                                android:textColor="#000"
+                                android:text="Relase Date : "
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:id="@+id/tvdate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="Tanggal"
+                                android:textColor="#000"
+                                android:textSize="12sp" />
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_marginTop="10dp"
                             android:orientation="horizontal"
@@ -108,11 +124,12 @@
                                 android:textSize="12sp"
                                 android:fontFamily="@font/roboto"
                                 android:textColor="#000"
-                                android:text="Genre : "
+                                android:text="Language : "
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"/>
                             <TextView
-                                android:id="@+id/tvgnre"
+                                android:textAllCaps="true"
+                                android:id="@+id/tvlang"
                                 android:textSize="12sp"
                                 android:fontFamily="@font/roboto"
                                 android:textColor="#000"

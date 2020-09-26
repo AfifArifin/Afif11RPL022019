@@ -69,8 +69,9 @@ public class ListData extends AppCompatActivity {
                                 modelku.setRelease_date(jsonObject.getString("release_date"));
                                 modelku.setAdult(jsonObject.getBoolean("adult"));
                                 modelku.setOverview(jsonObject.getString("overview"));
-                                modelku.setVote_average(jsonObject.getString("vote_count"));
+                                modelku.setVote_average(jsonObject.getString("vote_average"));
                                 modelku.setPopularity(jsonObject.getString("popularity"));
+                                modelku.setLang(jsonObject.getString("original_language"));
 
                                 DataArrayList.add(modelku);
                             }
@@ -87,6 +88,7 @@ public class ListData extends AppCompatActivity {
                                     intent.putExtra("popularity",movie.getPopularity());
                                     intent.putExtra("votecount",movie.getVote_average());
                                     intent.putExtra("adult",movie.getAdult());
+                                    intent.putExtra("lang",movie.getLang());
                                     startActivity(intent);
                                 }
 

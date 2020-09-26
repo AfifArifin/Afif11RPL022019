@@ -38,12 +38,11 @@ import java.util.List;
 public class DetailActivity extends AppCompatActivity {
 
     Bundle extras;
-    String title,desc,date,path,popularity,votecount;
+    String title,desc,date,path,popularity,votecount,lang;
     Boolean adult;
-    ArrayList<MyGenre>genreku;
 
 
-    TextView tvjudul,tvdate,tvadult,tvpopularity,tvrate,tvgenre;
+    TextView tvjudul,tvdate,tvadult,tvpopularity,tvrate,tvlang;
     ImageView ivposter,imgback;
     TextView tvdesc;
     Button btnbookmark;
@@ -53,11 +52,10 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-getGenreku();
 
         tvjudul = findViewById(R.id.tvjudul);
         imgback = findViewById(R.id.imgback);
-        tvgenre = findViewById(R.id.tvgnre);
+        tvlang = findViewById(R.id.tvlang);
         tvdate = findViewById(R.id.tvdate);
         ivposter = findViewById(R.id.ivposter);
         tvdesc = findViewById(R.id.txtdeskripsi);
@@ -81,9 +79,10 @@ imgback.setOnClickListener(new View.OnClickListener() {
             votecount = extras.getString("votecount");
             adult = extras.getBoolean("adult");
             desc = extras.getString("desc");
+            lang = extras.getString("lang");
 
 
-            
+            tvlang.setText(lang);
             tvjudul.setText(title);
             tvrate.setText(votecount);
             tvpopularity.setText(popularity);
@@ -102,54 +101,5 @@ imgback.setOnClickListener(new View.OnClickListener() {
 
         }
     }
-
-
-    public void getGenreku() {
-        genreku = new ArrayList<>();
-
-        AndroidNetworking.get("https://api.themoviedb.org/3/genre/movie/list?api_key=cffbf8a5f4d5b346c7aaff34e31b9b43&language=en-US")
-                .setTag("test")
-                .setPriority(Priority.LOW)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // do anything with response
-                        Log.d("hasiljson", "onResponse: " + response.toString());
-
-                        //jika sudah berhasil debugm lanjutkan code dibawah ini
-
-                        MyGenre modelku;
-                        try {
-                            JSONArray jsonArray= response.getJSONArray("genres");
-
-                            for(int i = 0; i < jsonArray.length(); i++) {
-                                modelku = new MyGenre();
-                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-                                modelku.setGenre(jsonObject.getString("name"));
-
-                                genreku.add(modelku);
-
-
-                            }
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
-                        Log.d("errorku", "onError errorCode : " + error.getErrorCode());
-                        Log.d("errorku", "onError errorBody : " + error.getErrorBody());
-                        Log.d("errorku", "onError errorDetail : " + error.getErrorDetail());
-                    }
-                });
-
-    }
-
-
-
 
 }
