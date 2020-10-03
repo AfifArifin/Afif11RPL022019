@@ -1,11 +1,11 @@
 package com.example.afif11rpl022019;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,12 +35,17 @@ public class ListData extends AppCompatActivity {
     private ImageView tambah_data;
     Realm realm;
     RealmHelper realmHelper;
+    private ProgressBar pgsBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
         recyclerView = (RecyclerView) findViewById(R.id.rvdata);
+        pgsBar = (ProgressBar) findViewById(R.id.pb1);
+        pgsBar.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.INVISIBLE);
+
         addOnlineData();
     }
 
@@ -120,7 +125,7 @@ public class ListData extends AppCompatActivity {
                         Log.d("errorku", "onError errorDetail : " + error.getErrorDetail());
                     }
                 });
-
+        recyclerView.setVisibility(View.VISIBLE);
     }
 
 }
