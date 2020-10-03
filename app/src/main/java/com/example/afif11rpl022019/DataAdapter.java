@@ -1,5 +1,7 @@
 package com.example.afif11rpl022019;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -18,13 +20,15 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHolder> {
+
     private ArrayList<Model> dataList;
     private Callback callback;
     View viewku;
     int posku;
-
+    Context context;
 
     interface Callback {
         void onClick(int position);
@@ -60,7 +64,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
                 .override(Target.SIZE_ORIGINAL)
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.ivprofile);
-
     }
 
 
@@ -126,6 +129,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
         }
     };
 
-
-
 }
+

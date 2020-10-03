@@ -52,7 +52,7 @@ public class MainMenuActivity extends AppCompatActivity {
         btnAdventure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), MovieFavoriteActivity.class));
             }
         });
         btnMagic.setOnClickListener(new View.OnClickListener() {

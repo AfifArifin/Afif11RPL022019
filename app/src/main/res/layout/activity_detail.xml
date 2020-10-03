@@ -164,7 +164,8 @@
 
                             <com.sackcentury.shinebuttonlib.ShineButton
                                 android:layout_marginBottom="10dp"
-                                android:layout_alignParentBottom="true"                        android:id="@+id/po_image1"
+                                android:layout_alignParentBottom="true"
+                                android:id="@+id/fav"
                                 android:layout_width="24dp"
                                 android:layout_height="25dp"
                                 android:layout_marginRight="15dp"

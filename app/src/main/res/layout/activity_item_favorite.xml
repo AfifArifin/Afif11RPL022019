@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/tools"
-    android:id="@+id/cardku"
+    android:id="@+id/cardku2"
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:elevation="0dp"
@@ -14,7 +14,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/ivprofile"
+            android:id="@+id/ivprofile2"
             android:layout_width="120dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="20dp" />
@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/ivprofile"
+            android:layout_toEndOf="@+id/ivprofile2"
             android:layout_toRightOf="@+id/ivprofile"
             android:background="#fff"
             android:orientation="vertical"
@@ -41,7 +41,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvname"
+                        android:id="@+id/tvname2"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:fontFamily="@font/roboto_bold"
@@ -65,7 +65,7 @@
                     android:text="Date : " />
 
                 <TextView
-                    android:id="@+id/tvdate"
+                    android:id="@+id/tvdate2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
@@ -84,7 +84,7 @@
                     android:text="Popularity : " />
 
                 <TextView
-                    android:id="@+id/tvpopularity"
+                    android:id="@+id/tvpopularity2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
@@ -98,6 +98,13 @@
                 android:layout_marginEnd="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="10dp">
+
+<!--                <Button-->
+<!--                    android:id="@+id/btnremove"-->
+<!--                    android:text="remove"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"/>-->
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -113,7 +120,7 @@
                         android:src="@drawable/ic_baseline_star_24" />
 
                     <TextView
-                        android:id="@+id/tvrate"
+                        android:id="@+id/tvrate2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
