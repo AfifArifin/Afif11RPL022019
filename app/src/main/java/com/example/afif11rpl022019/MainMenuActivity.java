@@ -7,12 +7,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     private long backpress;
     private Toast backToast;
-    TextView btnAction, btnAdventure, btnMagic, btnIsekai, btnsport, btnSuperPower, btnMartialArts, btnGame,btnMilitary,btnMecha;
+    private CardView cvfav,cvmovie;
 
     @Override
     public void onBackPressed() {
@@ -32,77 +33,22 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        btnAction = findViewById(R.id.btnAction);
-        btnAdventure = findViewById(R.id.btnAdventure);
-        btnMagic = findViewById(R.id.btnMagic);
-        btnIsekai = findViewById(R.id.btnIsekai);
-        btnsport = findViewById(R.id.btnSport);
-        btnSuperPower = findViewById(R.id.btnSuperPower);
-        btnMartialArts = findViewById(R.id.btnMartialArts);
-        btnGame = findViewById(R.id.btnGame);
-        btnMecha = findViewById(R.id.btnMecha);
-        btnMilitary = findViewById(R.id.btnMilitary);
+        cvfav = findViewById(R.id.cvfav);
+        cvmovie = findViewById(R.id.cvmovie);
 
-        btnAction.setOnClickListener(new View.OnClickListener() {
+        cvmovie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), ListData.class));
             }
         });
-        btnAdventure.setOnClickListener(new View.OnClickListener() {
+        cvfav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MovieFavoriteActivity.class));
             }
         });
-        btnMagic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnSuperPower.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnsport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnIsekai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnMartialArts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnMecha.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
-        btnMilitary.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainMenuActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 
 
