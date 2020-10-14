@@ -1,8 +1,10 @@
 package com.example.afif11rpl022019;
 
-import android.widget.Switch;
+import io.realm.RealmObject;
 
-public class Model {
+public class Model extends RealmObject {
+
+    private int id;
     String original_title;
     String release_date;
     String poster_path;
@@ -10,7 +12,14 @@ public class Model {
     String overview;
     int vote_count;
     String popularity,vote_average;
-String lang;
+    String lang;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getLang() {
         return lang;

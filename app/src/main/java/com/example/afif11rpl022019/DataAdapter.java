@@ -1,7 +1,5 @@
 package com.example.afif11rpl022019;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -12,15 +10,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHolder> {
 
@@ -28,21 +22,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
     private Callback callback;
     View viewku;
     int posku;
-    Context context;
 
     interface Callback {
         void onClick(int position);
-
-        void test();
     }
-
 
     public DataAdapter(ArrayList<Model> dataList, Callback callback) {
         this.callback = callback;
         this.dataList = dataList;
         Log.d("makanan", "MahasiswaAdapter: " + dataList.size() + "");
     }
-
 
     @Override
     public DatakuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -53,7 +42,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
 
     @Override
     public void onBindViewHolder(final DatakuViewHolder holder, final int position) {
-
         holder.txtNama.setText(dataList.get(position).getOriginal_title());
         holder.tvrate.setText(dataList.get(position).getVote_average());
         holder.tvpopularity.setText(dataList.get(position).getPopularity());
@@ -66,15 +54,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
                 .into(holder.ivprofile);
     }
 
-
     @Override
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
     }
 
-
     public class DatakuViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        private TextView txtNama, txtNpm, tvdate, tvpopularity, tvrate;
+        private TextView txtNama, tvdate, tvpopularity, tvrate;
         CardView card;
         ImageView ivprofile;
 
@@ -93,7 +79,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
                 @Override
                 public void onClick(View v) {
                     callback.onClick(getAdapterPosition());
-
 
                 }
             });
@@ -117,9 +102,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DatakuViewHold
             switch (item.getItemId()) {
                 case 1:
                     //Do stuff
-                    Toast.makeText(viewku.getContext(), "" + posku, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(viewku.getContext(), "" + posku, Toast.LENGTH_SHORT).show();
                     break;
-
                 case 2:
                     //Do stuff
 

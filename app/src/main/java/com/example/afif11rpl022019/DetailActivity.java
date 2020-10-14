@@ -1,42 +1,31 @@
 package com.example.afif11rpl022019;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.sackcentury.shinebuttonlib.ShineButton;
-
-import java.util.List;
-
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmResults;
 
 public class DetailActivity extends AppCompatActivity {
 
     Realm realm;
     RealmHelper realmHelper;
-    MovieModelRealm mahasiswaModel;
+    Model mahasiswaModel;
     Bundle extras;
     String title, desc, date, path, popularity, voteaverage, lang;
     String title2, date2, path2, popularity2, voteaverage2;
     Boolean adult;
-
+    int idfilm;
 
     TextView tvjudul, tvdate, tvadult, tvpopularity, tvrate, tvlang;
-    ImageView ivposter, imgback;
+    ImageView ivposter;
     TextView tvdesc;
-    Button btnbookmark;
     ShineButton fav;
 
     @Override
@@ -46,7 +35,6 @@ public class DetailActivity extends AppCompatActivity {
 
         fav = findViewById(R.id.fav);
         tvjudul = findViewById(R.id.tvjudul);
-        imgback = findViewById(R.id.imgback);
         tvlang = findViewById(R.id.tvlang);
         tvdate = findViewById(R.id.tvdate);
         ivposter = findViewById(R.id.ivposter);
@@ -54,15 +42,6 @@ public class DetailActivity extends AppCompatActivity {
         tvadult = findViewById(R.id.tvadultt);
         tvrate = findViewById(R.id.tvratee);
         tvpopularity = findViewById(R.id.tvpopuler);
-
-        fav.setChecked(update("save"));
-
-        imgback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ListData.class));
-            }
-        });
 
         extras = getIntent().getExtras();
         if (extras != null) {
@@ -74,7 +53,7 @@ public class DetailActivity extends AppCompatActivity {
             adult = extras.getBoolean("adult");
             desc = extras.getString("desc");
             lang = extras.getString("lang");
-
+            idfilm = Integer.parseInt(extras.getString("idfilm"));
 
             tvlang.setText(lang);
             tvjudul.setText(title);
@@ -95,39 +74,37 @@ public class DetailActivity extends AppCompatActivity {
 
         }
 
-        if (realm != null) {
-        }
-
         fav.setOnCheckStateChangeListener(new ShineButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(View view, boolean checked) {
 
-                SaveFav("save",checked);
-
                 //Set up Realm
                 Realm.init(DetailActivity.this);
-                realm = Realm.getDefaultInstance();
+                RealmConfiguration configuration = new RealmConfiguration.Builder().build();
+                realm = Realm.getInstance(configuration);
 
                 title2 = extras.getString("judul");
                 date2 = extras.getString("date");
                 path2 = extras.getString("gambar");
                 popularity2 = extras.getString("popularity");
                 voteaverage2 = extras.getString("voteaverage");
+                idfilm = Integer.parseInt(extras.getString("idfilm"));
 
-                mahasiswaModel = new MovieModelRealm();
+                mahasiswaModel = new Model();
                 mahasiswaModel.setRelease_date(date2);
                 mahasiswaModel.setPoster_path(path2);
                 mahasiswaModel.setOriginal_title(title2);
                 mahasiswaModel.setPopularity(popularity2);
                 mahasiswaModel.setVote_average(voteaverage2);
+                mahasiswaModel.setId(idfilm);
 
                 realmHelper = new RealmHelper(realm);
-                realmHelper.save(mahasiswaModel);
 
-                Toast.makeText(DetailActivity.this, "Added to favorites", Toast.LENGTH_SHORT).show();
-
-                if (!fav.isChecked()){
-
+                if (checked == true){
+                    realmHelper.save(mahasiswaModel);
+                    Toast.makeText(DetailActivity.this, "Saved", Toast.LENGTH_SHORT).show();
+                }else{
+                    realmHelper.delete(idfilm);
                     Toast.makeText(DetailActivity.this, "Removed", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -135,15 +112,5 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    public void SaveFav(String key,Boolean value){
-        SharedPreferences pref = getSharedPreferences("Save",MODE_PRIVATE);
-        Editor editor = pref.edit();
-        editor.putBoolean(key, value);
-        editor.apply();
-    }
 
-    public  boolean update(String key){
-        SharedPreferences pref = getSharedPreferences("Save",MODE_PRIVATE);
-        return pref.getBoolean(key,false);
-    }
 }

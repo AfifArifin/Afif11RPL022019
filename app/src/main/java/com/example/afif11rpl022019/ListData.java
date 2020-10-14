@@ -4,45 +4,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import io.realm.Realm;
-
 
 public class ListData extends AppCompatActivity {
 
-    private List<MovieModelRealm> mahasiswaModels;
     private RecyclerView recyclerView;
     private DataAdapter adapter;
     private ArrayList<Model> DataArrayList;
-    private ImageView tambah_data;
-    Realm realm;
-    RealmHelper realmHelper;
     private ProgressBar pgsBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
-        recyclerView = (RecyclerView) findViewById(R.id.rvdata);
-        pgsBar = (ProgressBar) findViewById(R.id.pb1);
+        recyclerView = findViewById(R.id.rvdata);
+        pgsBar = findViewById(R.id.pb1);
         pgsBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.INVISIBLE);
 
@@ -50,9 +37,7 @@ public class ListData extends AppCompatActivity {
     }
 
     public void addOnlineData() {
-
         DataArrayList = new ArrayList<>();
-        realmHelper = new RealmHelper(realm);
 
         AndroidNetworking.get("https://api.themoviedb.org/3/movie/now_playing?api_key=cffbf8a5f4d5b346c7aaff34e31b9b43&language=en-US&page=1")
                 .setTag("test")
@@ -63,13 +48,9 @@ public class ListData extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         // do anything with response
                         Log.d("hasiljson", "onResponse: " + response.toString());
-
-                        //jika sudah berhasil debugm lanjutkan code dibawah ini
-
                         Model modelku;
                         try {
                             JSONArray jsonArray = response.getJSONArray("results");
-
 
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 modelku = new Model();
@@ -82,6 +63,7 @@ public class ListData extends AppCompatActivity {
                                 modelku.setVote_average(jsonObject.getString("vote_average"));
                                 modelku.setPopularity(jsonObject.getString("popularity"));
                                 modelku.setLang(jsonObject.getString("original_language"));
+                                modelku.setId(Integer.parseInt(jsonObject.getString("id")));
 
                                 DataArrayList.add(modelku);
                             }
@@ -100,14 +82,11 @@ public class ListData extends AppCompatActivity {
                                     intent.putExtra("voteaverage", movie.getVote_average());
                                     intent.putExtra("adult", movie.getAdult());
                                     intent.putExtra("lang", movie.getLang());
+                                    intent.putExtra("idfilm", String.valueOf(movie.getId()));
 
                                     startActivity(intent);
                                 }
 
-                                @Override
-                                public void test() {
-
-                                }
                             });
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListData.this);
                             recyclerView.setLayoutManager(layoutManager);
