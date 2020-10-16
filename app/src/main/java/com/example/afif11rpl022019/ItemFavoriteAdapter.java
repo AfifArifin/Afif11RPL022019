@@ -1,8 +1,12 @@
 package com.example.afif11rpl022019;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -65,6 +69,23 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
                 ItemFavoriteAdapter.this.notifyDataSetChanged();
             }
         });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ItemFavoriteAdapterOnClick.class);
+                intent.putExtra("judul", model.getOriginal_title());
+                intent.putExtra("gambar", model.getPoster_path());
+                intent.putExtra("date", model.getRelease_date());
+                intent.putExtra("desc", model.getOverview());
+                intent.putExtra("popularity", model.getPopularity());
+                intent.putExtra("voteaverage", model.getVote_average());
+                intent.putExtra("adult", model.getAdult());
+                intent.putExtra("lang", model.getLang());
+
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -72,7 +93,7 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
         return mahasiswaModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder  {
         private TextView txtNama2, tvdate2, tvpopularity2, tvrate2;
         CardView card;
         ImageView ivprofile2, btnremove;
@@ -86,6 +107,9 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
             tvpopularity2 = itemView.findViewById(R.id.tvpopularity2);
             tvdate2 = itemView.findViewById(R.id.tvdate2);
             tvrate2 = itemView.findViewById(R.id.tvrate2);
+
         }
+
     }
+
 }

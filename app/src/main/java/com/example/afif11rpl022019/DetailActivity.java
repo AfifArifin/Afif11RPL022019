@@ -19,7 +19,6 @@ public class DetailActivity extends AppCompatActivity {
     Model mahasiswaModel;
     Bundle extras;
     String title, desc, date, path, popularity, voteaverage, lang;
-    String title2, date2, path2, popularity2, voteaverage2;
     Boolean adult;
     int idfilm;
 
@@ -83,19 +82,15 @@ public class DetailActivity extends AppCompatActivity {
                 RealmConfiguration configuration = new RealmConfiguration.Builder().build();
                 realm = Realm.getInstance(configuration);
 
-                title2 = extras.getString("judul");
-                date2 = extras.getString("date");
-                path2 = extras.getString("gambar");
-                popularity2 = extras.getString("popularity");
-                voteaverage2 = extras.getString("voteaverage");
-                idfilm = Integer.parseInt(extras.getString("idfilm"));
-
                 mahasiswaModel = new Model();
-                mahasiswaModel.setRelease_date(date2);
-                mahasiswaModel.setPoster_path(path2);
-                mahasiswaModel.setOriginal_title(title2);
-                mahasiswaModel.setPopularity(popularity2);
-                mahasiswaModel.setVote_average(voteaverage2);
+                mahasiswaModel.setAdult(adult);
+                mahasiswaModel.setOverview(desc);
+                mahasiswaModel.setLang(lang);
+                mahasiswaModel.setRelease_date(date);
+                mahasiswaModel.setPoster_path(path);
+                mahasiswaModel.setOriginal_title(title);
+                mahasiswaModel.setPopularity(popularity);
+                mahasiswaModel.setVote_average(voteaverage);
                 mahasiswaModel.setId(idfilm);
 
                 realmHelper = new RealmHelper(realm);

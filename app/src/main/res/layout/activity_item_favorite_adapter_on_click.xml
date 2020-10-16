@@ -41,7 +41,7 @@
                         android:layout_weight="1">
 
                         <ImageView
-                            android:id="@+id/ivposter"
+                            android:id="@+id/ivposter2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -57,7 +57,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/tvjudul"
+                            android:id="@+id/tvjudul2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="50dp"
@@ -82,7 +82,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/tvdate"
+                                android:id="@+id/tvdate2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
@@ -106,7 +106,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/tvadultt"
+                                android:id="@+id/tvadultt2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
@@ -129,7 +129,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/tvlang"
+                                android:id="@+id/tvlang2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
@@ -153,7 +153,7 @@
                                 android:textSize="12sp" />
 
                             <TextView
-                                android:id="@+id/tvpopuler"
+                                android:id="@+id/tvpopuler2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/roboto"
@@ -165,29 +165,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_marginBottom="25dp">
-
-
-                            <com.sackcentury.shinebuttonlib.ShineButton
-                                android:id="@+id/fav"
-                                android:layout_width="24dp"
-                                android:layout_height="25dp"
-                                android:layout_alignParentBottom="true"
-                                android:layout_marginRight="15dp"
-                                android:layout_marginBottom="10dp"
-                                android:src="@android:color/darker_gray"
-                                app:allow_random_color="false"
-                                app:big_shine_color="#FF6666"
-                                app:btn_color="@android:color/darker_gray"
-                                app:btn_fill_color="#FF6666"
-                                app:click_animation_duration="200"
-                                app:enable_flashing="false"
-                                app:shine_animation_duration="1500"
-                                app:shine_count="8"
-                                app:shine_turn_angle="10"
-                                app:siShape="@raw/heart"
-                                app:small_shine_color="#CC9999"
-                                app:small_shine_offset_angle="20" />
-
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -204,7 +181,7 @@
                                     android:src="@drawable/ic_baseline_star_24" />
 
                                 <TextView
-                                    android:id="@+id/tvratee"
+                                    android:id="@+id/tvratee2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto"
@@ -244,7 +221,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/txtdeskripsi"
+                        android:id="@+id/txtdeskripsi2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
