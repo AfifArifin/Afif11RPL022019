@@ -1,22 +1,25 @@
 package com.example.afif11rpl022019;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
+
 import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
 
@@ -62,11 +65,28 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
                 realm = Realm.getInstance(configuration);
                 realmHelper = new RealmHelper(realm);
 
-                int id = model.getId();
-                Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
-                realmHelper.delete(id);
-                ItemFavoriteAdapter.this.notifyItemRemoved(id);
-                ItemFavoriteAdapter.this.notifyDataSetChanged();
+                final int id = model.getId();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Are you sure ?");
+                builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
+                        realmHelper.delete(id);
+                        ItemFavoriteAdapter.this.notifyItemRemoved(id);
+                        ItemFavoriteAdapter.this.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
             }
         });
 
@@ -93,7 +113,7 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
         return mahasiswaModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder  {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView txtNama2, tvdate2, tvpopularity2, tvrate2;
         CardView card;
         ImageView ivprofile2, btnremove;

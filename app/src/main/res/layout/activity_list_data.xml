@@ -9,6 +9,7 @@
     tools:context=".ListData">
 
     <ProgressBar
+        android:visibility="gone"
         android:id="@+id/pb1"
         style="?android:attr/progressBarStyleLarge"
         android:layout_centerHorizontal="true"
