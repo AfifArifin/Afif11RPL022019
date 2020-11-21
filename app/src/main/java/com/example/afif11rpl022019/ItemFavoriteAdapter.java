@@ -95,6 +95,7 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ItemFavoriteAdapterOnClick.class);
+                intent.putExtra("idfilm", String.valueOf(model.getId()));
                 intent.putExtra("judul", model.getOriginal_title());
                 intent.putExtra("gambar", model.getPoster_path());
                 intent.putExtra("date", model.getRelease_date());

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:elevation="0dp"
-    app:cardBackgroundColor="#00AEFF"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
     card_view:cardElevation="0dp">
 
     <RelativeLayout
@@ -26,7 +26,7 @@
             android:layout_alignParentBottom="true"
             android:layout_toEndOf="@+id/ivprofile"
             android:layout_toRightOf="@+id/ivprofile"
-            android:background="#fff"
+            android:background="@color/colorPrimary"
             android:orientation="vertical"
             android:paddingLeft="20dp">
 
@@ -45,9 +45,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:fontFamily="@font/roboto_bold"
-                        android:hint="Movie Name"
+                        android:text="Movie Name"
                         android:paddingTop="10dp"
-                        android:textColor="#000"
+                        android:textColor="#fff"
                         android:textSize="20sp" />
                 </LinearLayout>
             </HorizontalScrollView>
@@ -59,17 +59,19 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="#fff"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:text="Date : " />
 
                 <TextView
+                    android:textColor="#fff"
                     android:id="@+id/tvdate"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
-                    android:hint="Date movie" />
+                    android:text="Date movie" />
             </LinearLayout>
 
             <LinearLayout
@@ -78,17 +80,19 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:textColor="#fff"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:fontFamily="@font/roboto"
                     android:text="Popularity : " />
 
                 <TextView
+                    android:textColor="#fff"
                     android:id="@+id/tvpopularity"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
-                    android:hint="Popularity" />
+                    android:text="Popularity" />
             </LinearLayout>
 
             <RelativeLayout
@@ -113,11 +117,12 @@
                         android:src="@drawable/ic_baseline_star_24" />
 
                     <TextView
+                        android:textColor="#fff"
                         android:id="@+id/tvrate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto"
-                        android:hint="Rate"
+                        android:text="Rate"
                         android:textSize="20sp" />
                 </LinearLayout>
 
