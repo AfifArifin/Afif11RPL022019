@@ -50,6 +50,7 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
         holder.tvpopularity2.setText(String.valueOf(model.getPopularity()));
         holder.tvdate2.setText(String.valueOf(model.getRelease_date()));
 
+
         Log.d("cover", "onBindViewHolder: " + model.getPoster_path());
         Glide.with(holder.itemView)
                 .load(model.getPoster_path())
@@ -75,7 +76,7 @@ public class ItemFavoriteAdapter extends RecyclerView.Adapter<ItemFavoriteAdapte
                         Toast.makeText(context, "Removed", Toast.LENGTH_SHORT).show();
                         realmHelper.delete(id);
                         ItemFavoriteAdapter.this.notifyItemRemoved(id);
-                        ItemFavoriteAdapter.this.notifyDataSetChanged();
+
                     }
                 });
                 builder.setNegativeButton("no", new DialogInterface.OnClickListener() {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">AFIF ARIFIN | 11 RPL 2</string>
+    <string name="facebook_app_id">685218012433445</string>
+    <string name="fb_login_protocol_scheme">fb685218012433445</string>
 </resources>

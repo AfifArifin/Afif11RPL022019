@@ -1,5 +1,6 @@
 package com.example.afif11rpl022019;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,15 +23,14 @@ public class ListData extends AppCompatActivity {
     private RecyclerView recyclerView;
     private DataAdapter adapter;
     private ArrayList<Model> DataArrayList;
-    private ProgressBar pgsBar;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_data);
         recyclerView = findViewById(R.id.rvdata);
-        pgsBar = findViewById(R.id.pb1);
-        pgsBar.setVisibility(View.VISIBLE);
+        dialog = new ProgressDialog(ListData.this);
         recyclerView.setVisibility(View.INVISIBLE);
 
         addOnlineData();
@@ -38,6 +38,11 @@ public class ListData extends AppCompatActivity {
 
     public void addOnlineData() {
         DataArrayList = new ArrayList<>();
+
+        //kasih loading
+        dialog.setMessage("Sedang memproses data");
+        dialog.show();
+        // background process
 
         AndroidNetworking.get("https://api.themoviedb.org/3/movie/now_playing?api_key=cffbf8a5f4d5b346c7aaff34e31b9b43&language=en-US&page=1")
                 .setTag("test")
@@ -91,20 +96,34 @@ public class ListData extends AppCompatActivity {
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ListData.this);
                             recyclerView.setLayoutManager(layoutManager);
                             recyclerView.setAdapter(adapter);
+
+                            recyclerView.setVisibility(View.VISIBLE);
+                            if (dialog.isShowing()) {
+                                dialog.dismiss();
+                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            if (dialog.isShowing()) {
+                                dialog.dismiss();
+                            }
                         }
                     }
 
                     @Override
                     public void onError(ANError error) {
+                        recyclerView.setVisibility(View.VISIBLE);
+
                         // handle error
                         Log.d("errorku", "onError errorCode : " + error.getErrorCode());
                         Log.d("errorku", "onError errorBody : " + error.getErrorBody());
                         Log.d("errorku", "onError errorDetail : " + error.getErrorDetail());
+
+                        if (dialog.isShowing()) {
+                            dialog.dismiss();
+                        }
                     }
                 });
-        recyclerView.setVisibility(View.VISIBLE);
     }
 
 }

@@ -8,25 +8,10 @@
     android:layout_height="match_parent"
     tools:context=".ListData">
 
-    <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/pb1"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:layout_margin="10dp"
             android:id="@+id/rvdata"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
-
-
-
-
-
 
 </RelativeLayout>
