@@ -135,16 +135,12 @@
             android:id="@+id/google_sign_in"
             android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/google" />
+            android:layout_height="wrap_content" />
 
         <com.facebook.login.widget.LoginButton
             android:id="@+id/fb_sign_in"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/facebook" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <TextView

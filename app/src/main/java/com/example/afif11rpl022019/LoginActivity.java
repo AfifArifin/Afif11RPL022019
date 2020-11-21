@@ -20,12 +20,15 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -33,6 +36,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -42,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth.AuthStateListener authStateListener;
     AccessTokenTracker accessTokenTracker;
 
-    ProgressDialog dialog;
+    ProgressDialog progressDialog;
 
     LoginButton fb_sign_in;
     SignInButton google_sign_in;
@@ -57,6 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
     static final String TAG = "FacebookAuthentication";
     static final String TAG2 = "EmailPassword";
+    private static final int RC_SIGN_IN = 9001;
 
 
     @Override
@@ -77,7 +82,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        dialog = new ProgressDialog(LoginActivity.this);
+
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Mohon Tunggu");
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Sedang menampilkan data");
+
+        AppEventsLogger.activateApp(this);
         tvforgot = findViewById(R.id.forgotPassword);
         txtemail = findViewById(R.id.inputEmail);
         txtpassword = findViewById(R.id.inputPassword);
@@ -134,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
         };
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -142,8 +155,7 @@ public class LoginActivity extends AppCompatActivity {
         google_sign_in.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-                startActivityForResult(signInIntent, 1);
+                signIn();
             }
         });
 
@@ -175,11 +187,84 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        mCallbackManager.onActivityResult(requestCode, resultCode, data);
-        super.onActivityResult(requestCode, resultCode, data);
+    //    Sign in With E-mail & Password
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
+    private void signIn(String email, String password) {
+        Log.d(TAG2, "signIn:" + email);
+        if (!validateForm()) {
+            return;
+        }
+
+        // [START sign_in_with_email]
+        progressDialog.show();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG2, "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LoginActivity.this, "Welcome " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            updateUI(user);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG2, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        }
+
+                    }
+                });
+    }
+
+    //    Sign in With Google
+    private void firebaseAuthWithGoogle(String idToken) {
+        // [START_EXCLUDE silent]
+        progressDialog.show();
+        // [END_EXCLUDE]
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Toast.makeText(LoginActivity.this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
+                            Intent in = new Intent(LoginActivity.this, MainMenuActivity.class);
+                            startActivity(in);
+                            updateUI(user);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            Toast.makeText(LoginActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                        }
+
+                    }
+                });
+    }
+    //Sign in with Facebook
 
     private void handleFacebookToken(AccessToken token) {
         Log.d(TAG, "handleFacebookToken " + token);
@@ -191,7 +276,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     Log.d(TAG, "sign in with credential: succesful");
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Toast.makeText(LoginActivity.this, "Welcome " + user, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome " + user.getDisplayName(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
                     startActivity(intent);
                 } else {
@@ -201,6 +286,55 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    //    Check Field Method
+    private boolean validateForm() {
+        boolean valid = true;
+
+        String email = txtemail.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            txtemail.setError("Required.");
+            valid = false;
+        } else {
+            txtemail.setError(null);
+        }
+
+        String password = txtpassword.getText().toString();
+        if (TextUtils.isEmpty(password)) {
+            txtpassword.setError("Required.");
+            valid = false;
+        } else {
+            txtpassword.setError(null);
+        }
+
+        return valid;
+    }
+
+    //Override Method
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+                // Google Sign In failed, update UI appropriately
+                Log.w(TAG, "Google sign in failed", e);
+                // [START_EXCLUDE]
+                updateUI(null);
+
+                // [END_EXCLUDE]
+            }
+        }
+    }
+
 
     @Override
     protected void onStart() {
@@ -228,67 +362,5 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validateForm() {
-        boolean valid = true;
-
-        String email = txtemail.getText().toString();
-        if (TextUtils.isEmpty(email)) {
-            txtemail.setError("Required.");
-            valid = false;
-        } else {
-            txtemail.setError(null);
-        }
-
-        String password = txtpassword.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            txtpassword.setError("Required.");
-            valid = false;
-        } else {
-            txtpassword.setError(null);
-        }
-
-        return valid;
-    }
-
-
-    private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
-            return;
-        }
-
-        // [START sign_in_with_email]
-        dialog.setMessage("Sedang memproses data");
-        dialog.show();
-
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "signInWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(LoginActivity.this, "Welcome "+user.getEmail(), Toast.LENGTH_SHORT).show();
-                            updateUI(user);
-                            if (dialog.isShowing()) {
-                                dialog.dismiss();
-                            }
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                            if (dialog.isShowing()) {
-                                dialog.dismiss();
-                            }
-                        }
-
-                    }
-                });
-        // [END sign_in_with_email]
-
-    }
 
 }
