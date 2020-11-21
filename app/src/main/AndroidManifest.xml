@@ -25,7 +25,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainMenuActivity" />
-        <activity android:name=".ControllClass" />
         <activity android:name=".ListData" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
